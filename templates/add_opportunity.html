@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Opportunity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="page-container form-page">
+
+        <div class="form-card">
+            <h1>Add New Opportunity</h1>
+            <p class="subtitle">Fill in the details below to create a new career opportunity.</p>
+
+            <form method="POST" class="styled-form">
+                <div class="form-group">
+                    <label for="title">Job Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter job title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company" placeholder="Enter company name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter location" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="6" placeholder="Enter opportunity description" required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Opportunity</button>
+                    <a href="/" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

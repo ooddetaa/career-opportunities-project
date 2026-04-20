@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Opportunities</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="page-container">
+
+        <div class="top-bar">
+            <div>
+                <h1>Career Opportunities</h1>
+                <p class="subtitle">
+                    Manage, edit, and track available career opportunities.
+                </p>
+            </div>
+
+            <div class="top-actions">
+                <a href="/applications" class="btn btn-secondary">View Applications</a>
+                <a href="/add" class="btn btn-primary">+ Add New Opportunity</a>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Available Opportunities</h2>
+
+            {% if opportunities %}
+                <div class="opportunity-list">
+                    {% for opportunity in opportunities %}
+                        <div class="opportunity-card">
+                            <div class="card-header">
+                                <h3>{{ opportunity.title }}</h3>
+                                <span class="location-badge">{{ opportunity.location }}</span>
+                            </div>
+
+                            <p><strong>Company:</strong> {{ opportunity.company }}</p>
+                            <p><strong>Description:</strong> {{ opportunity.description }}</p>
+
+                            <div class="card-actions">
+                                <a href="/apply/{{ opportunity.id }}" class="btn btn-success">Apply</a>
+                                <a href="/edit/{{ opportunity.id }}" class="btn btn-secondary">Edit</a>
+
+                                <form action="/delete/{{ opportunity.id }}" method="POST" class="inline-form">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <p>No opportunities found in the database yet.</p>
+                    <a href="/add" class="btn btn-primary">Add First Opportunity</a>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</body>
+</html>

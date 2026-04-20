@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Applications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="page-container">
+
+        <div class="top-bar">
+            <div>
+                <h1>Submitted Applications</h1>
+                <p class="subtitle">
+                    View all applications submitted for the listed opportunities.
+                </p>
+            </div>
+
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+
+        <div class="content-card">
+            <h2>Applications List</h2>
+
+            {% if applications %}
+                <div class="opportunity-list">
+                    {% for application in applications %}
+                        <div class="opportunity-card">
+                            <div class="card-header">
+                                <h3>{{ application.applicant_name }}</h3>
+                                <span class="location-badge">Opportunity #{{ application.opportunity_id }}</span>
+                            </div>
+
+                            <p><strong>Email:</strong> {{ application.applicant_email }}</p>
+                            <p><strong>Applied for:</strong> {{ application.opportunity.title }}</p>
+                            <p><strong>Company:</strong> {{ application.opportunity.company }}</p>
+                            <p><strong>Motivation:</strong> {{ application.motivation }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <p>No applications have been submitted yet.</p>
+                    <a href="/" class="btn btn-primary">Go to Opportunities</a>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</body>
+</html>
